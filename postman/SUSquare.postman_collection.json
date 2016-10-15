@@ -1,0 +1,251 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SUSquare",
+		"_postman_id": "2f528ea5-5601-900d-9afc-e98ed22bb53f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "aplicativos",
+			"description": "",
+			"item": [
+				{
+					"name": "/aplicativos/{codAplicativo}/tipos-perfil",
+					"request": {
+						"url": "{{url-metamodelo}}/aplicativos/{{codAplicativo}}/tipos-perfil",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descricao\": \"Teste 4\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "digits",
+			"description": "",
+			"item": [
+				{
+					"name": "Digits OAuth Validation",
+					"request": {
+						"url": "https://api.digits.com/1.1/sdk/account.json",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OAuth oauth_signature=\"g0m99yT0QbrLXSspiLrlEVFwWDk%3D\",oauth_nonce=\"5F7F5F02-DFB5-4420-BD37-507BB95EB553\",oauth_timestamp=\"1475940236\",oauth_consumer_key=\"sm8KoVk5v7k3iPr9yCe0R9Jiy\",oauth_token=\"3240033144-MD2Jij3efgjV9JSjYBCYGbbYZu4mT9dxSuuDCvX\",oauth_version=\"1.0\",oauth_signature_method=\"HMAC-SHA1\"",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "estabelecimentos",
+			"description": "",
+			"item": [
+				{
+					"name": "/estabelecimentos",
+					"request": {
+						"url": "{{url}}/estabelecimentos",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/estabelecimentos/latitude/{latitude}/longitude/{longitude}/raio/{raio}",
+					"request": {
+						"url": "{{url}}/estabelecimentos/latitude/-30.0277/longitude/-51.22873/raio/10?texto=FLEMING&quantidade=30",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pessoas",
+			"description": "",
+			"item": [
+				{
+					"name": "/pessoas",
+					"request": {
+						"url": "{{url-metamodelo}}/pessoas",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/pessoas/{codPessoa}",
+					"request": {
+						"url": "{{url-metamodelo}}/rest/pessoas/1815",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "postagens",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "tipos-postagens",
+			"description": "",
+			"item": [
+				{
+					"name": "/tipos-postagem",
+					"request": {
+						"url": "{{url-metamodelo}}/aplicativos/348/tipos-perfil",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"description": ""
+							},
+							{
+								"key": "appToken",
+								"value": "v1_CF9348A3B73438A4A3917C500DA214AC73E39D494BF70F41BB622BED8BF7FC3994DC97A419502170878ED35431F8F80D94F6F0181B36638A413CCE24E5CF7814D294C28CBC9DCE760408E3F8436916EF7728631251A3A49FBC590F611091833415B62ED420AD94A1CC1D3EC78C3C3C6234F9B3CA9B0763509ACA177634D273736BC5487D7A80445CA7C615CD6C285A5F0612DDB99B3DA5978264DA7AEC9AACC5CD9F08D02B9951D89A27AFED77492E507183868EAD684902F08368F08AC188608EF3EEE662446CC58BF86A74F3F735F096C03BA62F66FB09188C2CF6603D0F3B10A6EEEE9A68B31C02F0D9AEBD0E0AFC5A467A3825FFF0B5B7C8E67C08AC6D97082A9189CAB0A193F92C738610CD0BF5",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\tdescricao: \"Teste4\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/pessoas/autenticar (geral)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var jsonData = postman.getResponseHeader(\"appToken\");\r\npostman.setEnvironmentVariable(\"appToken\", jsonData);"
+					}
+				}
+			],
+			"request": {
+				"url": "{{url-metamodelo}}/pessoas/autenticar",
+				"method": "GET",
+				"header": [
+					{
+						"key": "email",
+						"value": "eduardo.arruda@pucrs.br",
+						"description": ""
+					},
+					{
+						"key": "senha",
+						"value": "12345",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/pessoas/autenticar (app)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "var jsonData = postman.getResponseHeader(\"appToken\");\r\npostman.setEnvironmentVariable(\"appToken\", jsonData);\r\n"
+					}
+				}
+			],
+			"request": {
+				"url": "{{url-metamodelo}}/pessoas/autenticar",
+				"method": "GET",
+				"header": [
+					{
+						"key": "appIdentifier",
+						"value": "{{codAplicativo}}",
+						"description": ""
+					},
+					{
+						"key": "email",
+						"value": "eduardo.arruda@pucrs.br",
+						"description": ""
+					},
+					{
+						"key": "senha",
+						"value": "12345",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
