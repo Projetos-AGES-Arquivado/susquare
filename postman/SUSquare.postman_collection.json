@@ -71,7 +71,7 @@
 				{
 					"name": "/estabelecimentos",
 					"request": {
-						"url": "{{url}}/estabelecimentos",
+						"url": "{{url-mapadasaude}}/estabelecimentos",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -85,7 +85,21 @@
 				{
 					"name": "/estabelecimentos/latitude/{latitude}/longitude/{longitude}/raio/{raio}",
 					"request": {
-						"url": "{{url}}/estabelecimentos/latitude/-30.0277/longitude/-51.22873/raio/10?texto=FLEMING&quantidade=30",
+						"url": "{{url-mapadasaude}}/estabelecimentos/latitude/-30.036588/longitude/-51.209567/raio/2",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/estabelecimentos/latitude/{latitude}/longitude/{longitude}/raio/{raio} copy",
+					"request": {
+						"url": "{{url-mapadasaude}}/estabelecimentos/latitude/-30.036588/longitude/-51.209567/raio/2?texto=HOSPITAL&quantidade=30",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -99,6 +113,67 @@
 			]
 		},
 		{
+			"name": "grupos",
+			"description": "",
+			"item": [
+				{
+					"name": "/grupos",
+					"request": {
+						"url": "{{url-metamodelo}}/grupos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"codAplicativo\": {{codAplicativo}},\r\n  \"codGrupoPai\": 0,\r\n  \"codObjeto\": 0,\r\n  \"codTipoObjeto\": 0,\r\n  \"descricao\": \"Grupo\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/grupos",
+					"request": {
+						"url": "{{url-metamodelo}}/grupos?codAplicativo={{codAplicativo}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "instalacoes",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "notificacoes",
+			"description": "",
+			"item": []
+		},
+		{
 			"name": "pessoas",
 			"description": "",
 			"item": [
@@ -107,10 +182,16 @@
 					"request": {
 						"url": "{{url-metamodelo}}/pessoas",
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeUsuario\": \"0e99e77ab5a265bbcbed6df555cebdb92fa8e383\", // sha1 do número do telefone do usuario\r\n  \"email\": \"0e99e77ab5a265bbcbed6df555cebdb92fa8e383@vamossaude.com.br\", // idem + @vamossaude.com.br\r\n  \"senha\": \"12345\" // senha a partir de alguma coisa do digits\r\n}\r\n"
 						},
 						"description": ""
 					},
@@ -119,15 +200,9 @@
 				{
 					"name": "/pessoas/{codPessoa}",
 					"request": {
-						"url": "{{url-metamodelo}}/rest/pessoas/1815",
+						"url": "{{url-metamodelo}}/pessoas/1744",
 						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "{{content-type}}",
-								"description": ""
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
@@ -141,7 +216,248 @@
 		{
 			"name": "postagens",
 			"description": "",
-			"item": []
+			"item": [
+				{
+					"name": "/postagens",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "appIdentifier",
+								"value": "{{codAplicativo}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": 1744\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 211\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/postagens",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codAutor=1744&codTiposPostagem=211",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/postagens/{codPostagem}",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/1694",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/postagens/{codPostagem}",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/1681",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/postagens/{codPostagem}/conteudos",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/1694/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{\\\"codUnidade\\\": \\\"4314902265052\\\"}\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/postagens/{codPostagem}/conteudos/{codConteudo}",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/1694/conteudos/1570",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/postagens/{codPostagem}/conteudos/{codConteudo}",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/1681/conteudos/1561",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tipos-objeto",
+			"description": "",
+			"item": [
+				{
+					"name": "/tipos-objeto",
+					"request": {
+						"url": "{{url-metamodelo}}/tipos-objeto",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descricao\": \"estabelecimento-favorito\",\r\n  \"ownerTabelaObjeto\": \"susquare\",\r\n  \"tabelaObjeto\": \"estabelecimento\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/tipos-objeto",
+					"request": {
+						"url": "{{url-metamodelo}}/tipos-objeto",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/tipos-objeto/{codTipoObjeto}",
+					"request": {
+						"url": "{{url-metamodelo}}/tipos-objeto/85",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/tipos-objeto/{codTipoObjeto}",
+					"request": {
+						"url": "{{url-metamodelo}}/tipos-objeto/83",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "tipos-postagens",
@@ -150,23 +466,37 @@
 				{
 					"name": "/tipos-postagem",
 					"request": {
-						"url": "{{url-metamodelo}}/aplicativos/348/tipos-perfil",
+						"url": "{{url-metamodelo}}/tipos-postagem",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "{{content-type}}",
+								"value": "application/json",
 								"description": ""
 							},
 							{
 								"key": "appToken",
-								"value": "v1_CF9348A3B73438A4A3917C500DA214AC73E39D494BF70F41BB622BED8BF7FC3994DC97A419502170878ED35431F8F80D94F6F0181B36638A413CCE24E5CF7814D294C28CBC9DCE760408E3F8436916EF7728631251A3A49FBC590F611091833415B62ED420AD94A1CC1D3EC78C3C3C6234F9B3CA9B0763509ACA177634D273736BC5487D7A80445CA7C615CD6C285A5F0612DDB99B3DA5978264DA7AEC9AACC5CD9F08D02B9951D89A27AFED77492E507183868EAD684902F08368F08AC188608EF3EEE662446CC58BF86A74F3F735F096C03BA62F66FB09188C2CF6603D0F3B10A6EEEE9A68B31C02F0D9AEBD0E0AFC5A467A3825FFF0B5B7C8E67C08AC6D97082A9189CAB0A193F92C738610CD0BF5",
+								"value": "{{appToken}}",
 								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\tdescricao: \"Teste4\"\r\n}"
+							"raw": "{\r\n  \"codAplicativo\": 348,\r\n  \"codTipoObjetoDestino\": 85,\r\n  \"descricao\": \"estabelecimento-favorito\",\r\n  \"textoFormatoJson\": \"Armazena o código dos estabelecimento de saúde que o usuário definiu como favorito. Formato do JSON: {\\\"codUnidade\\\": {codUnidade}}\"\r\n}\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/tipos-postagem",
+					"request": {
+						"url": "{{url-metamodelo}}/tipos-postagem/211",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
 						},
 						"description": ""
 					},
