@@ -335,7 +335,7 @@
 				{
 					"name": "/postagens/{codPostagem}/conteudos/{codConteudo}",
 					"request": {
-						"url": "{{url-metamodelo}}/postagens/1694/conteudos/1570",
+						"url": "{{url-metamodelo}}/postagens/1694/conteudos/1569",
 						"method": "GET",
 						"header": [
 							{
@@ -426,7 +426,7 @@
 				{
 					"name": "/tipos-objeto/{codTipoObjeto}",
 					"request": {
-						"url": "{{url-metamodelo}}/tipos-objeto/85",
+						"url": "{{url-metamodelo}}/tipos-objeto/87",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -482,18 +482,77 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"codAplicativo\": 348,\r\n  \"codTipoObjetoDestino\": 85,\r\n  \"descricao\": \"estabelecimento-favorito\",\r\n  \"textoFormatoJson\": \"Armazena o código dos estabelecimento de saúde que o usuário definiu como favorito. Formato do JSON: {\\\"codUnidade\\\": {codUnidade}}\"\r\n}\r\n"
+							"raw": "{\r\n  \"codAplicativo\": 348,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"descricao\": \"feedback-positivo\",\r\n  \"textoFormatoJson\": \"Armazena os feedbacks positivos registrados pelas pessoas durante os atendimentos que recebem em um estabelecimento de saúde. Formato do JSON: {...}\"\r\n}\r\n\r\n"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "/tipos-postagem",
+					"name": "/tipos-postagem/aplicativo/{{codAplicativo}}",
 					"request": {
-						"url": "{{url-metamodelo}}/tipos-postagem/211",
+						"url": "{{url-metamodelo}}/tipos-postagem/aplicativo/{{codAplicativo}}",
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/tipos-postagem/{codTipoPostagem}",
+					"request": {
+						"url": "{{url-metamodelo}}/tipos-postagem/222",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/tipos-postagem/{codTipoPostagem}",
+					"request": {
+						"url": "{{url-metamodelo}}/tipos-postagem/222",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"codAplicativo\": 348,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"descricao\": \"feedback positivo para estabelecimento de saúde\",\r\n  \"textoFormatoJson\": \"Armazena os feedbacks positivos registrados pelas pessoas durante os atendimentos que recebem em um estabelecimento de saúde. Formato do JSON: {...}\"\r\n}\r\n\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/tipos-postagem/{codTipoPostagem}",
+					"request": {
+						"url": "{{url-metamodelo}}/tipos-postagem/217",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
