@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "SUSquare",
-		"_postman_id": "477572f9-20e8-6c10-7b09-946509e79112",
+		"_postman_id": "04c011ea-16ef-03c7-a2b8-401be5a79045",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -228,6 +228,62 @@
 					"name": "Visualizar etapa",
 					"request": {
 						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos/{{codEtapa}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "avaliações de atendimento",
+			"description": "",
+			"item": [
+				{
+					"name": "Cadastrar Questionário",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "appIdentifier",
+								"value": "{{codAplicativo}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": 1744\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 229\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar Questionário",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}",
 						"method": "GET",
 						"header": [
 							{
