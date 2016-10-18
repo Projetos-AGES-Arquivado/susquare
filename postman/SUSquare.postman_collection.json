@@ -2,11 +2,47 @@
 	"variables": [],
 	"info": {
 		"name": "SUSquare",
-		"_postman_id": "04c011ea-16ef-03c7-a2b8-401be5a79045",
+		"_postman_id": "51cce2a4-c3ef-287b-9ff1-998087c56a4f",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "agendamentos",
+			"description": "",
+			"item": [
+				{
+					"name": "Criar postagem",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "appIdentifier",
+								"value": "{{codAplicativo}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": 1810\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 230\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "aplicativos",
 			"description": "",
