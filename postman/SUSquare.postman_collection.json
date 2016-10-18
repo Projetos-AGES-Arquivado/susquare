@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "SUSquare",
-		"_postman_id": "2f528ea5-5601-900d-9afc-e98ed22bb53f",
+		"_postman_id": "477572f9-20e8-6c10-7b09-946509e79112",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -31,6 +31,214 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"descricao\": \"Teste 4\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "atendimentos",
+			"description": "",
+			"item": [
+				{
+					"name": "Criar atendimento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codAtendimento\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "appIdentifier",
+								"value": "{{codAplicativo}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"conteudo\": {\r\n    \"JSON\": \"{ \\\"codUnidade\\\": \\\"String\\\", \\\"checkInMetodo\\\": \\\"georef|gps|manual\\\", \\\"dispositivoModelo\\\": \\\"SM-G900MD\\\", \\\"dispositivoMarca\\\": \\\"Samsung\\\", \\\"dispositivoSisOp\\\": \\\"Android\\\", \\\"dispositivoSisOpVersao\\\": \\\"6.0.1\\\" }\"\r\n  },\r\n  \"postagem\": {\r\n    \"autor\": {\r\n      \"codPessoa\": {{currentUser}}\r\n    },\r\n    \"latitude\": -30.036588,\r\n    \"longitude\": -51.209567,\r\n    \"tipo\": {\r\n      \"codTipoPostagem\": 221\r\n    }\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Dar check-in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codEtapa\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": "postman.setEnvironmentVariable('isoTime',(new Date()).toISOString());"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{ \\\"descricao\\\": \\\"check-in\\\", \\\"checkInMetodo\\\": \\\"georef|gps|manual\\\", \\\"timestamp\\\": \\\"{{currentTime}}\\\", \\\"latitude\\\": -30.036588, \\\"longitude\\\": -51.209567 }\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar etapa",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codEtapa\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": "postman.setEnvironmentVariable('isoTime',(new Date()).toISOString());"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{ \\\"descricao\\\": \\\"teste\\\", \\\"timestamp\\\": \\\"{{currentTime}}\\\" }\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Dar check-out",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codEtapa\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": "postman.setEnvironmentVariable('isoTime',(new Date()).toISOString());"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{ \\\"descricao\\\": \\\"check-out\\\", \\\"checkOutMetodo\\\": \\\"georef|gps|manual\\\", \\\"timestamp\\\": \\\"{{currentTime}}\\\", \\\"latitude\\\": -30.036588, \\\"longitude\\\": -51.209567 }\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar atendimento",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar etapa",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos/{{codEtapa}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": ""
 					},
@@ -570,7 +778,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var jsonData = postman.getResponseHeader(\"appToken\");\r\npostman.setEnvironmentVariable(\"appToken\", jsonData);"
+						"exec": "var jsonData = postman.getResponseHeader(\"appToken\");\r\npostman.setEnvironmentVariable(\"appToken\", jsonData);\r\n\r\nvar myJSON = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"currentUser\", myJSON.cod);\r\n"
 					}
 				}
 			],
@@ -580,12 +788,12 @@
 				"header": [
 					{
 						"key": "email",
-						"value": "eduardo.arruda@pucrs.br",
+						"value": "maximilian.zorzetti@acad.pucrs.br",
 						"description": ""
 					},
 					{
 						"key": "senha",
-						"value": "12345",
+						"value": "batata8000",
 						"description": ""
 					}
 				],
@@ -604,7 +812,7 @@
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": "var jsonData = postman.getResponseHeader(\"appToken\");\r\npostman.setEnvironmentVariable(\"appToken\", jsonData);\r\n"
+						"exec": "var jsonData = postman.getResponseHeader(\"appToken\");\r\npostman.setEnvironmentVariable(\"appToken\", jsonData);\r\n\r\nvar myJSON = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"currentUser\", myJSON.cod);\r\n"
 					}
 				}
 			],
