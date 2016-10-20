@@ -1,1129 +1,1014 @@
 {
-	"variables": [],
-	"info": {
-		"name": "SUSquare",
-		"_postman_id": "7fc26f7a-4e21-d6e5-80aa-68da4947e3d8",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-	},
-	"item": [
+	"id": "05b6a094-e1ca-4754-6e96-492b483893a3",
+	"name": "SUSquare",
+	"description": "",
+	"order": [
+		"f3410a76-c5c6-0062-1e16-1f98a6dcebbe",
+		"0758f7f1-59eb-d586-1c4d-5797bd2585b0"
+	],
+	"folders": [
 		{
+			"id": "1ed769a6-b3a4-5e69-098c-039aa857d4e2",
 			"name": "agendamentos",
 			"description": "",
-			"item": [
-				{
-					"name": "Criar agendamento",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codAgendamento\", myHeader.toString().substring(myHeader.toString().length-4));"
-							}
-						}
-					],
-					"request": {
-						"url": "{{url-metamodelo}}/postagens",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "appIdentifier",
-								"value": "{{codAplicativo}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"codObjetoDestino\": 999,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 230\r\n  }\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Criar requisição de agendamento",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codRequisicaoAgendamento\", myHeader.toString().substring(myHeader.toString().length-4));"
-							}
-						}
-					],
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/2221/conteudos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"JSON\": \"{\\\"tipoAtendimento\\\": \\\"consulta|exame|procedimento\\\",\\\"especialidadeAtendimento\\\": \\\"Nutricionista\\\"}\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Listar profissionais do estabelecimento",
-					"request": {
-						"url": "{{url-mapadasaude}}/profissionais/unidade/4314902265052",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Listar serviços do estabelecimento",
-					"request": {
-						"url": "{{url-mapadasaude}}/servicos/unidade/4314902265052",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"9628fb82-1bbb-6b05-7dc8-0b297bd62aab",
+				"bce374fb-c566-c335-0a1f-2546f99539c6",
+				"05fb7604-d42a-cd54-2d56-444dd2cb3f6f",
+				"765b04f9-1243-e7d3-d2ee-2afe582133a4"
+			],
+			"owner": "1084767"
 		},
 		{
+			"id": "dc7c49fc-cebe-c9ab-cab1-2035810bb3c2",
 			"name": "aplicativos",
 			"description": "",
-			"item": [
-				{
-					"name": "/aplicativos/{codAplicativo}/tipos-perfil",
-					"request": {
-						"url": "{{url-metamodelo}}/aplicativos/{{codAplicativo}}/tipos-perfil",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"descricao\": \"Teste 4\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"fe3455b7-bb4b-ce2d-6e41-926409ef39bb"
+			],
+			"owner": "1084767"
 		},
 		{
+			"id": "458c2407-21ae-acaf-ccb7-b8da31a3b5f8",
 			"name": "atendimentos",
 			"description": "",
-			"item": [
-				{
-					"name": "Criar atendimento",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codAtendimento\", myHeader.toString().substring(myHeader.toString().length-4));"
-							}
-						}
-					],
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/conteudos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "appIdentifier",
-								"value": "{{codAplicativo}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"conteudo\": {\r\n    \"JSON\": \"{ \\\"codUnidade\\\": \\\"String\\\", \\\"checkInMetodo\\\": \\\"georef|gps|manual\\\", \\\"dispositivoModelo\\\": \\\"SM-G900MD\\\", \\\"dispositivoMarca\\\": \\\"Samsung\\\", \\\"dispositivoSisOp\\\": \\\"Android\\\", \\\"dispositivoSisOpVersao\\\": \\\"6.0.1\\\" }\"\r\n  },\r\n  \"postagem\": {\r\n    \"autor\": {\r\n      \"codPessoa\": {{currentUser}}\r\n    },\r\n    \"latitude\": -30.036588,\r\n    \"longitude\": -51.209567,\r\n    \"tipo\": {\r\n      \"codTipoPostagem\": 221\r\n    }\r\n  }\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Dar check-in",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codEtapa\", myHeader.toString().substring(myHeader.toString().length-4));"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": "postman.setEnvironmentVariable('isoTime',(new Date()).toISOString());"
-							}
-						}
-					],
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"JSON\": \"{ \\\"descricao\\\": \\\"check-in\\\", \\\"checkInMetodo\\\": \\\"georef|gps|manual\\\", \\\"timestamp\\\": \\\"{{currentTime}}\\\", \\\"latitude\\\": -30.036588, \\\"longitude\\\": -51.209567 }\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Adicionar etapa",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codEtapa\", myHeader.toString().substring(myHeader.toString().length-4));"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": "postman.setEnvironmentVariable('isoTime',(new Date()).toISOString());"
-							}
-						}
-					],
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"JSON\": \"{ \\\"descricao\\\": \\\"teste\\\", \\\"timestamp\\\": \\\"{{currentTime}}\\\" }\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Dar check-out",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codEtapa\", myHeader.toString().substring(myHeader.toString().length-4));"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": "postman.setEnvironmentVariable('isoTime',(new Date()).toISOString());"
-							}
-						}
-					],
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"JSON\": \"{ \\\"descricao\\\": \\\"check-out\\\", \\\"checkOutMetodo\\\": \\\"georef|gps|manual\\\", \\\"timestamp\\\": \\\"{{currentTime}}\\\", \\\"latitude\\\": -30.036588, \\\"longitude\\\": -51.209567 }\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Visualizar atendimento",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Visualizar etapa",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos/{{codEtapa}}",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"b62d230d-fc96-bb37-4617-7559af0a52b9",
+				"03216a95-9344-a108-e7c8-1dcdfefd49ee",
+				"73886e06-6735-29e2-8202-c64ddd6e9c8a",
+				"0530fa45-c0ca-4791-0e36-abf152d3ee08",
+				"0e811763-e232-da25-1e34-5dbce2f23b89",
+				"4906cd7c-6205-0817-4b51-af6ca89ee8f3"
+			],
+			"owner": "1084767"
 		},
 		{
+			"id": "8942770e-bd72-08b5-2df6-1a38f97dc16e",
 			"name": "avaliações de atendimento",
 			"description": "",
-			"item": [
-				{
-					"name": "Criar questionário",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codQuestionario\", myHeader.toString().substring(myHeader.toString().length-4));"
-							}
-						}
-					],
-					"request": {
-						"url": "{{url-metamodelo}}/postagens",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "appIdentifier",
-								"value": "{{codAplicativo}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 229\r\n  }\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Visualizar questionário",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Criar questão",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}/conteudos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"JSON\": \"{ \\\"pergunta\\\": \\\"texto da pergunta\\\", \\\"tipo\\\": \\\"texto|multi|simples|valor\\\", \\\"opcoes\\\" : [{\\\"cod\\\": 0, \\\"texto\\\": \\\"texto da opcao\\\"}] }\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Criar questionário preenchido",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codQuestionarioPreenchido\", myHeader.toString().substring(myHeader.toString().length-4));"
-							}
-						}
-					],
-					"request": {
-						"url": "{{url-metamodelo}}/postagens",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "appIdentifier",
-								"value": "{{codAplicativo}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 233\r\n  }\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Criar questão preenchida",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}/conteudos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"JSON\": \"{ \\\"codQuestao\\\": 2099, \\\"opcoes\\\": [codOpcao] }\",\r\n  \"texto\": \"resposta texto\",\r\n  \"valor\": 5\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Visualizar questionário preenchido",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"e7005d64-7a9d-ebfa-6414-bccd122535a9",
+				"a1132227-9ead-bca6-eed6-008d73e5c43d",
+				"7f761d3d-cb9e-6a67-d0f4-d5b3b4cd824e",
+				"30cc2c3b-902f-d6ff-6dc6-9f8d1f52a0d8",
+				"97b690e9-9370-5114-1387-545704ac7321",
+				"723a276e-8a7d-0be5-ae6c-92386d9f8322"
+			],
+			"owner": "1084767"
 		},
 		{
+			"id": "92596fba-d63d-70e7-84fd-eb5d6e5dbde9",
 			"name": "digits",
 			"description": "",
-			"item": [
-				{
-					"name": "Digits OAuth Validation",
-					"request": {
-						"url": "https://api.digits.com/1.1/sdk/account.json",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "OAuth oauth_signature=\"g0m99yT0QbrLXSspiLrlEVFwWDk%3D\",oauth_nonce=\"5F7F5F02-DFB5-4420-BD37-507BB95EB553\",oauth_timestamp=\"1475940236\",oauth_consumer_key=\"sm8KoVk5v7k3iPr9yCe0R9Jiy\",oauth_token=\"3240033144-MD2Jij3efgjV9JSjYBCYGbbYZu4mT9dxSuuDCvX\",oauth_version=\"1.0\",oauth_signature_method=\"HMAC-SHA1\"",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"197f52bb-f458-430f-633f-70106b26c345"
+			],
+			"owner": "1084767"
 		},
 		{
+			"id": "dde8acf8-1e01-7c2e-1cba-f6ef812a2cdd",
 			"name": "estabelecimentos",
 			"description": "",
-			"item": [
-				{
-					"name": "/estabelecimentos",
-					"request": {
-						"url": "{{url-mapadasaude}}/estabelecimentos",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/estabelecimentos/latitude/{latitude}/longitude/{longitude}/raio/{raio}",
-					"request": {
-						"url": "{{url-mapadasaude}}/estabelecimentos/latitude/-30.036588/longitude/-51.209567/raio/2",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/estabelecimentos/latitude/{latitude}/longitude/{longitude}/raio/{raio} copy",
-					"request": {
-						"url": "{{url-mapadasaude}}/estabelecimentos/latitude/-30.036588/longitude/-51.209567/raio/2?texto=HOSPITAL&quantidade=30",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"e3d299a0-7609-08d3-af17-54be5cf96a03",
+				"323fcef6-42a2-5050-48ee-9b1a1972fbe7",
+				"ed25b686-bb38-8b66-985a-96ba3caf77c2"
+			],
+			"owner": "1084767"
 		},
 		{
+			"id": "ba7088ec-fd96-452c-6a2d-7a5e1445d6b1",
+			"name": "feedback negativo",
+			"description": "",
+			"order": [
+				"eddbe79b-dff4-fec3-93d4-318c67b30272",
+				"70f87474-f24c-2f2a-c979-521d926a3bec",
+				"4d935d3c-b469-f7d5-0ab7-932d54a92c99",
+				"743f31d6-bc71-02d2-ee4e-915e63363b61",
+				"fed3c73e-17d6-3f4b-8a36-311aba938d70"
+			],
+			"owner": "1084767",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3"
+		},
+		{
+			"id": "e9b4794b-6389-3155-a943-cadae9d8061f",
+			"name": "feedback positivo",
+			"description": "",
+			"order": [
+				"8e30221f-7e13-a254-7641-0f1f42b3a12a",
+				"4d9ab84f-bd84-06d6-21d2-3a93daa8a0b2",
+				"7bd55f2b-bece-5e6b-6eef-fef56d9811b7",
+				"76e3d65e-f62f-d0ee-2e66-63332c9ae300",
+				"9bb508d4-882a-b467-40cf-df3f334cdc49"
+			],
+			"owner": "1084767",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3"
+		},
+		{
+			"id": "30e9d9ea-59af-b831-d264-66b5f546ad5f",
 			"name": "grupos",
 			"description": "",
-			"item": [
-				{
-					"name": "/grupos",
-					"request": {
-						"url": "{{url-metamodelo}}/grupos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"codAplicativo\": {{codAplicativo}},\r\n  \"codGrupoPai\": 0,\r\n  \"codObjeto\": 0,\r\n  \"codTipoObjeto\": 0,\r\n  \"descricao\": \"Grupo\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/grupos",
-					"request": {
-						"url": "{{url-metamodelo}}/grupos?codAplicativo={{codAplicativo}}",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"6b909131-9901-ecf4-e307-55a90898dd89",
+				"aaa01efe-a2a8-33fa-ccf4-ad85de6eb7de"
+			],
+			"owner": "1084767"
 		},
 		{
+			"id": "53b4ff3c-e0d6-a811-70dc-f74c543cd2b1",
 			"name": "instalacoes",
 			"description": "",
-			"item": []
+			"order": [],
+			"owner": "1084767"
 		},
 		{
+			"id": "e4e83d31-f4e1-19a0-8d3d-f0426ba3647d",
 			"name": "notificacoes",
 			"description": "",
-			"item": []
+			"order": [],
+			"owner": "1084767"
 		},
 		{
+			"id": "cc023cc4-d8d2-554f-70a5-0516cd4154da",
 			"name": "pessoas",
 			"description": "",
-			"item": [
-				{
-					"name": "/pessoas",
-					"request": {
-						"url": "{{url-metamodelo}}/pessoas",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nomeUsuario\": \"0e99e77ab5a265bbcbed6df555cebdb92fa8e383\", // sha1 do número do telefone do usuario\r\n  \"email\": \"0e99e77ab5a265bbcbed6df555cebdb92fa8e383@vamossaude.com.br\", // idem + @vamossaude.com.br\r\n  \"senha\": \"12345\" // senha a partir de alguma coisa do digits\r\n}\r\n"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/pessoas/{codPessoa}",
-					"request": {
-						"url": "{{url-metamodelo}}/pessoas/1744",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"dfbf9d1d-9151-b6c3-8f3f-a0cd17cf6e47",
+				"4cfe6093-b3b0-e3f0-213a-47730837046f"
+			],
+			"owner": "1084767"
 		},
 		{
+			"id": "fce2f11c-6f0f-7d15-ddb9-0f269d6c59dd",
 			"name": "postagens",
 			"description": "",
-			"item": [
-				{
-					"name": "/postagens",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "appIdentifier",
-								"value": "{{codAplicativo}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": 1744\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 211\r\n  }\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/postagens",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codAutor=1744&codTiposPostagem=211",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/postagens/{codPostagem}",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/1694",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/postagens/{codPostagem}",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/1681",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/postagens/{codPostagem}/conteudos",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/1694/conteudos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"JSON\": \"{\\\"codUnidade\\\": \\\"4314902265052\\\"}\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/postagens/{codPostagem}/conteudos/{codConteudo}",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/1694/conteudos/1569",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/postagens/{codPostagem}/conteudos/{codConteudo}",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/1681/conteudos/1561",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"1e3b058e-bdd5-7f08-d540-c9ff76a7702a",
+				"0f91caa6-2f69-426f-353d-ebaa9e00b1ce",
+				"0efe08fd-186d-7d84-680f-d9fafeb7d28d",
+				"1e46d7b5-a85d-737d-70b5-d533f7842dac",
+				"86f29232-6d2b-2eed-edf0-e8e665e3adef",
+				"51f137ed-e0ad-2520-651c-002a96f5b6ba",
+				"aaa01d9e-57f0-c012-f313-439dec31d01b"
+			],
+			"owner": "1084767"
 		},
 		{
+			"id": "ec4ce314-591e-292b-4354-3604978a0c51",
 			"name": "tipos-objeto",
 			"description": "",
-			"item": [
-				{
-					"name": "/tipos-objeto",
-					"request": {
-						"url": "{{url-metamodelo}}/tipos-objeto",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"descricao\": \"estabelecimento-favorito\",\r\n  \"ownerTabelaObjeto\": \"susquare\",\r\n  \"tabelaObjeto\": \"estabelecimento\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/tipos-objeto",
-					"request": {
-						"url": "{{url-metamodelo}}/tipos-objeto",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/tipos-objeto/{codTipoObjeto}",
-					"request": {
-						"url": "{{url-metamodelo}}/tipos-objeto/87",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/tipos-objeto/{codTipoObjeto}",
-					"request": {
-						"url": "{{url-metamodelo}}/tipos-objeto/83",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"060c9391-db47-b4f7-41cb-247dcae8e224",
+				"5b579dd2-86df-ff24-1d81-12e0e25683fd",
+				"fe58b347-4f2b-8bea-34a8-725332685168",
+				"1b4ba632-4517-0590-6770-b6782b56cf6d"
+			],
+			"owner": "1084767"
 		},
 		{
+			"id": "dc78d5e2-9811-eaab-e27d-fa62b977cc8b",
 			"name": "tipos-postagens",
 			"description": "",
-			"item": [
-				{
-					"name": "/tipos-postagem",
-					"request": {
-						"url": "{{url-metamodelo}}/tipos-postagem",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"codAplicativo\": 348,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"descricao\": \"questionário de avaliação preenchido\",\r\n  \"textoFormatoJson\": \"Armazena as respostas dadas por um usuário após dar check-out em um estabelecimento. Formato do JSON: { \\\"codQuestao\\\": codQuestao, \\\"opcoes\\\": [codOpcao] }\"\r\n}\r\n\r\n"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/tipos-postagem/aplicativo/{{codAplicativo}}",
-					"request": {
-						"url": "{{url-metamodelo}}/tipos-postagem/aplicativo/{{codAplicativo}}",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/tipos-postagem/{codTipoPostagem}",
-					"request": {
-						"url": "{{url-metamodelo}}/tipos-postagem/222",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/tipos-postagem/{codTipoPostagem}",
-					"request": {
-						"url": "{{url-metamodelo}}/tipos-postagem/222",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"codAplicativo\": 348,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"descricao\": \"feedback positivo para estabelecimento de saúde\",\r\n  \"textoFormatoJson\": \"Armazena os feedbacks positivos registrados pelas pessoas durante os atendimentos que recebem em um estabelecimento de saúde. Formato do JSON: {...}\"\r\n}\r\n\r\n"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/tipos-postagem/{codTipoPostagem}",
-					"request": {
-						"url": "{{url-metamodelo}}/tipos-postagem/217",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "/pessoas/autenticar (geral)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": "var jsonData = postman.getResponseHeader(\"appToken\");\r\npostman.setEnvironmentVariable(\"appToken\", jsonData);\r\n\r\nvar myJSON = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"currentUser\", myJSON.cod);\r\n"
-					}
-				}
+			"order": [
+				"2cb22667-977b-4951-085b-ad7d9177c8f2",
+				"c2b2a7d1-9c33-2eab-84b1-752ac9584006",
+				"3f59e794-6c70-70a5-4619-de9f7af5d44e",
+				"e87f4c7f-e817-dc26-17eb-aefc8ad05d0f",
+				"53acfb37-3ae7-92be-adc9-96d38ec0248a"
 			],
-			"request": {
-				"url": "{{url-metamodelo}}/pessoas/autenticar",
-				"method": "GET",
-				"header": [
-					{
-						"key": "email",
-						"value": "maximilian.zorzetti@acad.pucrs.br",
-						"description": ""
-					},
-					{
-						"key": "senha",
-						"value": "batata8000",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
+			"owner": "1084767"
+		}
+	],
+	"timestamp": 0,
+	"owner": "1084767",
+	"public": false,
+	"requests": [
+		{
+			"id": "03216a95-9344-a108-e7c8-1dcdfefd49ee",
+			"name": "Dar check-in",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"JSON\": \"{ \\\"descricao\\\": \\\"check-in\\\", \\\"checkInMetodo\\\": \\\"georef|gps|manual\\\", \\\"timestamp\\\": \\\"{{currentTime}}\\\", \\\"latitude\\\": -30.036588, \\\"longitude\\\": -51.209567 }\"\r\n}",
+			"tests": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codEtapa\", myHeader.toString().substring(myHeader.toString().length-4));",
+			"preRequestScript": "postman.setEnvironmentVariable('isoTime',(new Date()).toISOString());",
+			"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos",
+			"responses": [],
+			"folder": "458c2407-21ae-acaf-ccb7-b8da31a3b5f8"
 		},
 		{
+			"id": "0530fa45-c0ca-4791-0e36-abf152d3ee08",
+			"name": "Dar check-out",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"JSON\": \"{ \\\"descricao\\\": \\\"check-out\\\", \\\"checkOutMetodo\\\": \\\"georef|gps|manual\\\", \\\"timestamp\\\": \\\"{{currentTime}}\\\", \\\"latitude\\\": -30.036588, \\\"longitude\\\": -51.209567 }\"\r\n}",
+			"tests": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codEtapa\", myHeader.toString().substring(myHeader.toString().length-4));",
+			"preRequestScript": "postman.setEnvironmentVariable('isoTime',(new Date()).toISOString());",
+			"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos",
+			"responses": [],
+			"folder": "458c2407-21ae-acaf-ccb7-b8da31a3b5f8"
+		},
+		{
+			"id": "05fb7604-d42a-cd54-2d56-444dd2cb3f6f",
+			"name": "Listar profissionais do estabelecimento",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-mapadasaude}}/profissionais/unidade/4314902265052",
+			"responses": [],
+			"folder": "1ed769a6-b3a4-5e69-098c-039aa857d4e2"
+		},
+		{
+			"id": "060c9391-db47-b4f7-41cb-247dcae8e224",
+			"name": "/tipos-objeto",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"descricao\": \"estabelecimento-favorito\",\r\n  \"ownerTabelaObjeto\": \"susquare\",\r\n  \"tabelaObjeto\": \"estabelecimento\"\r\n}",
+			"url": "{{url-metamodelo}}/tipos-objeto",
+			"responses": [],
+			"folder": "ec4ce314-591e-292b-4354-3604978a0c51"
+		},
+		{
+			"id": "0758f7f1-59eb-d586-1c4d-5797bd2585b0",
 			"name": "/pessoas/autenticar (app)",
-			"event": [
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "appIdentifier: {{codAplicativo}}\nemail: eduardo.arruda@pucrs.br\nsenha: 12345",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"tests": "var jsonData = postman.getResponseHeader(\"appToken\");\r\npostman.setEnvironmentVariable(\"appToken\", jsonData);\r\n\r\nvar myJSON = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"currentUser\", myJSON.cod);\r\n",
+			"preRequestScript": "",
+			"url": "{{url-metamodelo}}/pessoas/autenticar",
+			"responses": []
+		},
+		{
+			"id": "0e811763-e232-da25-1e34-5dbce2f23b89",
+			"name": "Visualizar atendimento",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}",
+			"responses": [],
+			"folder": "458c2407-21ae-acaf-ccb7-b8da31a3b5f8"
+		},
+		{
+			"id": "0efe08fd-186d-7d84-680f-d9fafeb7d28d",
+			"name": "/postagens/{codPostagem}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/postagens/1694",
+			"responses": [],
+			"folder": "fce2f11c-6f0f-7d15-ddb9-0f269d6c59dd"
+		},
+		{
+			"id": "0f91caa6-2f69-426f-353d-ebaa9e00b1ce",
+			"name": "/postagens",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codAutor=1744&codTiposPostagem=211",
+			"responses": [],
+			"folder": "fce2f11c-6f0f-7d15-ddb9-0f269d6c59dd"
+		},
+		{
+			"id": "197f52bb-f458-430f-633f-70106b26c345",
+			"name": "Digits OAuth Validation",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "Authorization: OAuth oauth_signature=\"g0m99yT0QbrLXSspiLrlEVFwWDk%3D\",oauth_nonce=\"5F7F5F02-DFB5-4420-BD37-507BB95EB553\",oauth_timestamp=\"1475940236\",oauth_consumer_key=\"sm8KoVk5v7k3iPr9yCe0R9Jiy\",oauth_token=\"3240033144-MD2Jij3efgjV9JSjYBCYGbbYZu4mT9dxSuuDCvX\",oauth_version=\"1.0\",oauth_signature_method=\"HMAC-SHA1\"",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "https://api.digits.com/1.1/sdk/account.json",
+			"responses": [],
+			"folder": "92596fba-d63d-70e7-84fd-eb5d6e5dbde9"
+		},
+		{
+			"id": "1b4ba632-4517-0590-6770-b6782b56cf6d",
+			"name": "/tipos-objeto/{codTipoObjeto}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "DELETE",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/tipos-objeto/83",
+			"responses": [],
+			"folder": "ec4ce314-591e-292b-4354-3604978a0c51"
+		},
+		{
+			"id": "1e3b058e-bdd5-7f08-d540-c9ff76a7702a",
+			"name": "/postagens",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nappIdentifier: {{codAplicativo}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"autor\": {\r\n    \"codPessoa\": 1744\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 211\r\n  }\r\n}",
+			"url": "{{url-metamodelo}}/postagens",
+			"responses": [],
+			"folder": "fce2f11c-6f0f-7d15-ddb9-0f269d6c59dd"
+		},
+		{
+			"id": "1e46d7b5-a85d-737d-70b5-d533f7842dac",
+			"name": "/postagens/{codPostagem}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "DELETE",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/postagens/1681",
+			"responses": [],
+			"folder": "fce2f11c-6f0f-7d15-ddb9-0f269d6c59dd"
+		},
+		{
+			"id": "2cb22667-977b-4951-085b-ad7d9177c8f2",
+			"name": "/tipos-postagem",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "Content-Type: application/json\nappToken: {{appToken}}",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"codAplicativo\": 348,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"descricao\": \"questionário de avaliação preenchido\",\r\n  \"textoFormatoJson\": \"Armazena as respostas dadas por um usuário após dar check-out em um estabelecimento. Formato do JSON: { \\\"codQuestao\\\": codQuestao, \\\"opcoes\\\": [codOpcao] }\"\r\n}\r\n\r\n",
+			"url": "{{url-metamodelo}}/tipos-postagem",
+			"responses": [],
+			"folder": "dc78d5e2-9811-eaab-e27d-fa62b977cc8b"
+		},
+		{
+			"id": "30cc2c3b-902f-d6ff-6dc6-9f8d1f52a0d8",
+			"name": "Criar questionário preenchido",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nappIdentifier: {{codAplicativo}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 233\r\n  }\r\n}",
+			"tests": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codQuestionarioPreenchido\", myHeader.toString().substring(myHeader.toString().length-4));",
+			"preRequestScript": "",
+			"url": "{{url-metamodelo}}/postagens",
+			"responses": [],
+			"folder": "8942770e-bd72-08b5-2df6-1a38f97dc16e"
+		},
+		{
+			"id": "323fcef6-42a2-5050-48ee-9b1a1972fbe7",
+			"name": "/estabelecimentos/latitude/{latitude}/longitude/{longitude}/raio/{raio}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-mapadasaude}}/estabelecimentos/latitude/-30.036588/longitude/-51.209567/raio/2",
+			"responses": [],
+			"folder": "dde8acf8-1e01-7c2e-1cba-f6ef812a2cdd"
+		},
+		{
+			"id": "3f59e794-6c70-70a5-4619-de9f7af5d44e",
+			"name": "/tipos-postagem/{codTipoPostagem}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/tipos-postagem/222",
+			"responses": [],
+			"folder": "dc78d5e2-9811-eaab-e27d-fa62b977cc8b"
+		},
+		{
+			"id": "4906cd7c-6205-0817-4b51-af6ca89ee8f3",
+			"name": "Visualizar etapa",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos/{{codEtapa}}",
+			"responses": [],
+			"folder": "458c2407-21ae-acaf-ccb7-b8da31a3b5f8"
+		},
+		{
+			"id": "4cfe6093-b3b0-e3f0-213a-47730837046f",
+			"name": "/pessoas/{codPessoa}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/pessoas/1744",
+			"responses": [],
+			"folder": "cc023cc4-d8d2-554f-70a5-0516cd4154da"
+		},
+		{
+			"id": "4d935d3c-b469-f7d5-0ab7-932d54a92c99",
+			"headers": "appToken: {{appToken}}\n",
+			"url": "{{url-metamodelo}}/postagens/{{codFeedbackNegativo}}/conteudos/{{codConteudoFeedbackNegativo}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1476980484127,
+			"name": "visualizar conteudo do feedback negativo",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"folder": "e9b4794b-6389-3155-a943-cadae9d8061f",
+			"id": "4d9ab84f-bd84-06d6-21d2-3a93daa8a0b2",
+			"name": "visualizar feedback positivo",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "appToken: {{appToken}}\n",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url-metamodelo}}/postagens/{{codFeedbackPositivo}}",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"responses": [],
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3"
+		},
+		{
+			"id": "51f137ed-e0ad-2520-651c-002a96f5b6ba",
+			"name": "/postagens/{codPostagem}/conteudos/{codConteudo}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/postagens/1694/conteudos/1569",
+			"responses": [],
+			"folder": "fce2f11c-6f0f-7d15-ddb9-0f269d6c59dd"
+		},
+		{
+			"id": "53acfb37-3ae7-92be-adc9-96d38ec0248a",
+			"name": "/tipos-postagem/{codTipoPostagem}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "DELETE",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/tipos-postagem/217",
+			"responses": [],
+			"folder": "dc78d5e2-9811-eaab-e27d-fa62b977cc8b"
+		},
+		{
+			"id": "5b579dd2-86df-ff24-1d81-12e0e25683fd",
+			"name": "/tipos-objeto",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/tipos-objeto",
+			"responses": [],
+			"folder": "ec4ce314-591e-292b-4354-3604978a0c51"
+		},
+		{
+			"id": "6b909131-9901-ecf4-e307-55a90898dd89",
+			"name": "/grupos",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "Content-Type: application/json\nappToken: {{appToken}}",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"codAplicativo\": {{codAplicativo}},\r\n  \"codGrupoPai\": 0,\r\n  \"codObjeto\": 0,\r\n  \"codTipoObjeto\": 0,\r\n  \"descricao\": \"Grupo\"\r\n}",
+			"url": "{{url-metamodelo}}/grupos",
+			"responses": [],
+			"folder": "30e9d9ea-59af-b831-d264-66b5f546ad5f"
+		},
+		{
+			"id": "70f87474-f24c-2f2a-c979-521d926a3bec",
+			"headers": "appToken: {{appToken}}\n",
+			"url": "{{url-metamodelo}}/postagens/{{codFeedbackNegativo}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1476980054187,
+			"name": "visualizar feedback negativo",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "723a276e-8a7d-0be5-ae6c-92386d9f8322",
+			"name": "Visualizar questionário preenchido",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}",
+			"responses": [],
+			"folder": "8942770e-bd72-08b5-2df6-1a38f97dc16e"
+		},
+		{
+			"id": "73886e06-6735-29e2-8202-c64ddd6e9c8a",
+			"name": "Adicionar etapa",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"JSON\": \"{ \\\"descricao\\\": \\\"teste\\\", \\\"timestamp\\\": \\\"{{currentTime}}\\\" }\"\r\n}",
+			"tests": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codEtapa\", myHeader.toString().substring(myHeader.toString().length-4));",
+			"preRequestScript": "postman.setEnvironmentVariable('isoTime',(new Date()).toISOString());",
+			"url": "{{url-metamodelo}}/postagens/{{codAtendimento}}/conteudos",
+			"responses": [],
+			"folder": "458c2407-21ae-acaf-ccb7-b8da31a3b5f8"
+		},
+		{
+			"id": "743f31d6-bc71-02d2-ee4e-915e63363b61",
+			"headers": "appToken: {{appToken}}\n",
+			"url": "{{url-metamodelo}}/postagens/{{codFeedbackNegativo}}/conteudos/{{codConteudoFeedbackNegativo}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1476980025923,
+			"name": "visualizar imagem do conteudo do feed",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "765b04f9-1243-e7d3-d2ee-2afe582133a4",
+			"name": "Listar serviços do estabelecimento",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-mapadasaude}}/servicos/unidade/4314902265052",
+			"responses": [],
+			"folder": "1ed769a6-b3a4-5e69-098c-039aa857d4e2"
+		},
+		{
+			"id": "76e3d65e-f62f-d0ee-2e66-63332c9ae300",
+			"headers": "appToken: {{appToken}}\n",
+			"url": "{{url-metamodelo}}/postagens/{{codFeedbackPositivo}}/conteudos/{{codConteudoFeedbackPositivo}}/conteudoBinario",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1476980497934,
+			"name": "visualizar imagem do conteudo do feed",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"folder": "e9b4794b-6389-3155-a943-cadae9d8061f",
+			"id": "7bd55f2b-bece-5e6b-6eef-fef56d9811b7",
+			"name": "visualizar conteudo do feedback positivo",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "appToken: {{appToken}}\n",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{url-metamodelo}}/postagens/{{codFeedbackPositivo}}/conteudos/{{codConteudoFeedbackPositivo}}",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"responses": [],
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3"
+		},
+		{
+			"id": "7f761d3d-cb9e-6a67-d0f4-d5b3b4cd824e",
+			"name": "Criar questão",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"JSON\": \"{ \\\"pergunta\\\": \\\"texto da pergunta\\\", \\\"tipo\\\": \\\"texto|multi|simples|valor\\\", \\\"opcoes\\\" : [{\\\"cod\\\": 0, \\\"texto\\\": \\\"texto da opcao\\\"}] }\"\r\n}",
+			"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}/conteudos",
+			"responses": [],
+			"folder": "8942770e-bd72-08b5-2df6-1a38f97dc16e"
+		},
+		{
+			"id": "86f29232-6d2b-2eed-edf0-e8e665e3adef",
+			"name": "/postagens/{codPostagem}/conteudos",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"JSON\": \"{\\\"codUnidade\\\": \\\"4314902265052\\\"}\"\r\n}",
+			"url": "{{url-metamodelo}}/postagens/1694/conteudos",
+			"responses": [],
+			"folder": "fce2f11c-6f0f-7d15-ddb9-0f269d6c59dd"
+		},
+		{
+			"folder": "e9b4794b-6389-3155-a943-cadae9d8061f",
+			"id": "8e30221f-7e13-a254-7641-0f1f42b3a12a",
+			"name": "cadastrar feedback positivo",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"conteudo\": {\r\n    \"JSON\": \"{\\\"comentario\\\": \\\"Excelente posto de saúde! Parabéns\\\",\\\"timestampComentario\\\": \\\"2016-10-17 18:45:00\\\"}\"\r\n  },\r\n  \"postagem\": {\r\n    \"autor\": {\r\n      \"codPessoa\": {{currentUser}}\r\n    },\r\n    \"postagemRelacionada\": {\r\n      \"codPostagem\": {{codAtendimento}}\r\n    },\r\n    \"tipo\": {\r\n      \"codTipoPostagem\": 222\r\n    }\r\n  }\r\n}",
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "appToken: {{appToken}}\nappIdentifier: {{codAplicativo}}\nContent-Type: application/json\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url-metamodelo}}/postagens/conteudos",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"responses": [],
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3"
+		},
+		{
+			"id": "9628fb82-1bbb-6b05-7dc8-0b297bd62aab",
+			"name": "Criar agendamento",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nappIdentifier: {{codAplicativo}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"codObjetoDestino\": 999,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 230\r\n  }\r\n}",
+			"tests": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codAgendamento\", myHeader.toString().substring(myHeader.toString().length-4));",
+			"preRequestScript": "",
+			"url": "{{url-metamodelo}}/postagens",
+			"responses": [],
+			"folder": "1ed769a6-b3a4-5e69-098c-039aa857d4e2"
+		},
+		{
+			"id": "97b690e9-9370-5114-1387-545704ac7321",
+			"name": "Criar questão preenchida",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"JSON\": \"{ \\\"codQuestao\\\": 2099, \\\"opcoes\\\": [codOpcao] }\",\r\n  \"texto\": \"resposta texto\",\r\n  \"valor\": 5\r\n}",
+			"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}/conteudos",
+			"responses": [],
+			"folder": "8942770e-bd72-08b5-2df6-1a38f97dc16e"
+		},
+		{
+			"folder": "e9b4794b-6389-3155-a943-cadae9d8061f",
+			"id": "9bb508d4-882a-b467-40cf-df3f334cdc49",
+			"name": "post conteudo binario em conteudo postagem",
+			"dataMode": "params",
+			"data": [
 				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": "var jsonData = postman.getResponseHeader(\"appToken\");\r\npostman.setEnvironmentVariable(\"appToken\", jsonData);\r\n\r\nvar myJSON = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"currentUser\", myJSON.cod);\r\n"
-					}
+					"key": "file",
+					"value": "nigabrnac7.jpg",
+					"type": "file",
+					"enabled": true
 				}
 			],
-			"request": {
-				"url": "{{url-metamodelo}}/pessoas/autenticar",
-				"method": "GET",
-				"header": [
-					{
-						"key": "appIdentifier",
-						"value": "{{codAplicativo}}",
-						"description": ""
-					},
-					{
-						"key": "email",
-						"value": "eduardo.arruda@pucrs.br",
-						"description": ""
-					},
-					{
-						"key": "senha",
-						"value": "12345",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
+			"rawModeData": "{\r\n  \"JSON\": \"{\\\"codUnidade\\\": \\\"4314902265052\\\"}\"\r\n}",
+			"descriptionFormat": null,
+			"description": "",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/json\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{url-metamodelo}}/postagens/{{codFeedbackPositivo}}/conteudos/{{codConteudoFeedbackPositivo}}/conteudoBinario",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"responses": [],
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3"
+		},
+		{
+			"id": "a1132227-9ead-bca6-eed6-008d73e5c43d",
+			"name": "Visualizar questionário",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}",
+			"responses": [],
+			"folder": "8942770e-bd72-08b5-2df6-1a38f97dc16e"
+		},
+		{
+			"id": "aaa01d9e-57f0-c012-f313-439dec31d01b",
+			"name": "/postagens/{codPostagem}/conteudos/{codConteudo}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "DELETE",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/postagens/1681/conteudos/1561",
+			"responses": [],
+			"folder": "fce2f11c-6f0f-7d15-ddb9-0f269d6c59dd"
+		},
+		{
+			"id": "aaa01efe-a2a8-33fa-ccf4-ad85de6eb7de",
+			"name": "/grupos",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "appToken: {{appToken}}",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/grupos?codAplicativo={{codAplicativo}}",
+			"responses": [],
+			"folder": "30e9d9ea-59af-b831-d264-66b5f546ad5f"
+		},
+		{
+			"id": "b62d230d-fc96-bb37-4617-7559af0a52b9",
+			"name": "Criar atendimento",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nappIdentifier: {{codAplicativo}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"conteudo\": {\r\n    \"JSON\": \"{ \\\"codUnidade\\\": \\\"String\\\", \\\"checkInMetodo\\\": \\\"georef|gps|manual\\\", \\\"dispositivoModelo\\\": \\\"SM-G900MD\\\", \\\"dispositivoMarca\\\": \\\"Samsung\\\", \\\"dispositivoSisOp\\\": \\\"Android\\\", \\\"dispositivoSisOpVersao\\\": \\\"6.0.1\\\" }\"\r\n  },\r\n  \"postagem\": {\r\n    \"autor\": {\r\n      \"codPessoa\": {{currentUser}}\r\n    },\r\n    \"latitude\": -30.036588,\r\n    \"longitude\": -51.209567,\r\n    \"tipo\": {\r\n      \"codTipoPostagem\": 221\r\n    }\r\n  }\r\n}",
+			"tests": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codAtendimento\", myHeader.toString().substring(myHeader.toString().length-4));",
+			"preRequestScript": "",
+			"url": "{{url-metamodelo}}/postagens/conteudos",
+			"responses": [],
+			"folder": "458c2407-21ae-acaf-ccb7-b8da31a3b5f8"
+		},
+		{
+			"id": "bce374fb-c566-c335-0a1f-2546f99539c6",
+			"name": "Criar requisição de agendamento",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"JSON\": \"{\\\"tipoAtendimento\\\": \\\"consulta|exame|procedimento\\\",\\\"especialidadeAtendimento\\\": \\\"Nutricionista\\\"}\"\r\n}",
+			"tests": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codRequisicaoAgendamento\", myHeader.toString().substring(myHeader.toString().length-4));",
+			"preRequestScript": "",
+			"url": "{{url-metamodelo}}/postagens/2221/conteudos",
+			"responses": [],
+			"folder": "1ed769a6-b3a4-5e69-098c-039aa857d4e2"
+		},
+		{
+			"id": "c2b2a7d1-9c33-2eab-84b1-752ac9584006",
+			"name": "/tipos-postagem/aplicativo/{{codAplicativo}}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/tipos-postagem/aplicativo/{{codAplicativo}}",
+			"responses": [],
+			"folder": "dc78d5e2-9811-eaab-e27d-fa62b977cc8b"
+		},
+		{
+			"id": "dfbf9d1d-9151-b6c3-8f3f-a0cd17cf6e47",
+			"name": "/pessoas",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"nomeUsuario\": \"0e99e77ab5a265bbcbed6df555cebdb92fa8e383\", // sha1 do número do telefone do usuario\r\n  \"email\": \"0e99e77ab5a265bbcbed6df555cebdb92fa8e383@vamossaude.com.br\", // idem + @vamossaude.com.br\r\n  \"senha\": \"12345\" // senha a partir de alguma coisa do digits\r\n}\r\n",
+			"url": "{{url-metamodelo}}/pessoas",
+			"responses": [],
+			"folder": "cc023cc4-d8d2-554f-70a5-0516cd4154da"
+		},
+		{
+			"id": "e3d299a0-7609-08d3-af17-54be5cf96a03",
+			"name": "/estabelecimentos",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-mapadasaude}}/estabelecimentos",
+			"responses": [],
+			"folder": "dde8acf8-1e01-7c2e-1cba-f6ef812a2cdd"
+		},
+		{
+			"id": "e7005d64-7a9d-ebfa-6414-bccd122535a9",
+			"name": "Criar questionário",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nappIdentifier: {{codAplicativo}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 229\r\n  }\r\n}",
+			"tests": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codQuestionario\", myHeader.toString().substring(myHeader.toString().length-4));",
+			"preRequestScript": "",
+			"url": "{{url-metamodelo}}/postagens",
+			"responses": [],
+			"folder": "8942770e-bd72-08b5-2df6-1a38f97dc16e"
+		},
+		{
+			"id": "e87f4c7f-e817-dc26-17eb-aefc8ad05d0f",
+			"name": "/tipos-postagem/{codTipoPostagem}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "PUT",
+			"headers": "Content-Type: application/json\nappToken: {{appToken}}",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"codAplicativo\": 348,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"descricao\": \"feedback positivo para estabelecimento de saúde\",\r\n  \"textoFormatoJson\": \"Armazena os feedbacks positivos registrados pelas pessoas durante os atendimentos que recebem em um estabelecimento de saúde. Formato do JSON: {...}\"\r\n}\r\n\r\n",
+			"url": "{{url-metamodelo}}/tipos-postagem/222",
+			"responses": [],
+			"folder": "dc78d5e2-9811-eaab-e27d-fa62b977cc8b"
+		},
+		{
+			"id": "ed25b686-bb38-8b66-985a-96ba3caf77c2",
+			"name": "/estabelecimentos/latitude/{latitude}/longitude/{longitude}/raio/{raio} copy",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-mapadasaude}}/estabelecimentos/latitude/-30.036588/longitude/-51.209567/raio/2?texto=HOSPITAL&quantidade=30",
+			"responses": [],
+			"folder": "dde8acf8-1e01-7c2e-1cba-f6ef812a2cdd"
+		},
+		{
+			"id": "eddbe79b-dff4-fec3-93d4-318c67b30272",
+			"headers": "appToken: {{appToken}}\nappIdentifier: {{codAplicativo}}\nContent-Type: application/json\n",
+			"url": "{{url-metamodelo}}/postagens/conteudos",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1476980226002,
+			"name": "cadastrar feedback negativo",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"responses": [],
+			"rawModeData": "{\r\n  \"conteudo\": {\r\n    \"JSON\": \"{\\\"comentario\\\": \\\"Horrivels\\\",\\\"timestampComentario\\\": \\\"2016-10-17 18:45:00\\\"}\"\r\n  },\r\n  \"postagem\": {\r\n    \"autor\": {\r\n      \"codPessoa\": {{currentUser}}\r\n    },\r\n    \"postagemRelacionada\": {\r\n      \"codPostagem\": {{codAtendimento}}\r\n    },\r\n    \"tipo\": {\r\n      \"codTipoPostagem\": 223\r\n    }\r\n  }\r\n}"
+		},
+		{
+			"id": "f3410a76-c5c6-0062-1e16-1f98a6dcebbe",
+			"name": "/pessoas/autenticar (geral)",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "email: maximilian.zorzetti@acad.pucrs.br\nsenha: batata8000",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"tests": "var jsonData = postman.getResponseHeader(\"appToken\");\r\npostman.setEnvironmentVariable(\"appToken\", jsonData);\r\n\r\nvar myJSON = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"currentUser\", myJSON.cod);\r\n",
+			"preRequestScript": "",
+			"url": "{{url-metamodelo}}/pessoas/autenticar",
+			"responses": []
+		},
+		{
+			"id": "fe3455b7-bb4b-ce2d-6e41-926409ef39bb",
+			"name": "/aplicativos/{codAplicativo}/tipos-perfil",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "POST",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"descricao\": \"Teste 4\"\r\n}",
+			"url": "{{url-metamodelo}}/aplicativos/{{codAplicativo}}/tipos-perfil",
+			"responses": [],
+			"folder": "dc7c49fc-cebe-c9ab-cab1-2035810bb3c2"
+		},
+		{
+			"id": "fe58b347-4f2b-8bea-34a8-725332685168",
+			"name": "/tipos-objeto/{codTipoObjeto}",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{url-metamodelo}}/tipos-objeto/87",
+			"responses": [],
+			"folder": "ec4ce314-591e-292b-4354-3604978a0c51"
+		},
+		{
+			"id": "fed3c73e-17d6-3f4b-8a36-311aba938d70",
+			"headers": "appToken: {{appToken}}\nContent-Type: application/x-www-form-urlencoded\n",
+			"url": "{{url-metamodelo}}/postagens/{{codFeedbackNegativo}}/conteudos/{{codConteudoFeedbackNegativo}}/conteudoBinario",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "file",
+					"value": "nigabrnac7.jpg",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1476980489343,
+			"name": "post conteudo binario em conteudo d postagem",
+			"description": "",
+			"collectionId": "05b6a094-e1ca-4754-6e96-492b483893a3",
+			"responses": []
 		}
 	]
 }
