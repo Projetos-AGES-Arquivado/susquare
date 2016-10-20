@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "SUSquare",
-		"_postman_id": "bc7a5fc0-19ac-4901-ef8b-5df9b0253770",
+		"_postman_id": "7fc26f7a-4e21-d6e5-80aa-68da4947e3d8",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -12,7 +12,16 @@
 			"description": "",
 			"item": [
 				{
-					"name": "Criar postagem de agendamento",
+					"name": "Criar agendamento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codAgendamento\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						}
+					],
 					"request": {
 						"url": "{{url-metamodelo}}/postagens",
 						"method": "POST",
@@ -35,7 +44,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": 1810\r\n  },\r\n  \"codObjetoDestino\": 999,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 230\r\n  }\r\n}"
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"codObjetoDestino\": 999,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 230\r\n  }\r\n}"
 						},
 						"description": ""
 					},
@@ -43,6 +52,15 @@
 				},
 				{
 					"name": "Criar requisição de agendamento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codRequisicaoAgendamento\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						}
+					],
 					"request": {
 						"url": "{{url-metamodelo}}/postagens/2221/conteudos",
 						"method": "POST",
@@ -60,16 +78,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"JSON\": \"{\\\"tipoAtendimento\\\": \\\"Exame\\\",\\\"especialidadeAtendimento\\\": \\\"Nutricionista\\\"}\"\r\n}"
+							"raw": "{\r\n  \"JSON\": \"{\\\"tipoAtendimento\\\": \\\"consulta|exame|procedimento\\\",\\\"especialidadeAtendimento\\\": \\\"Nutricionista\\\"}\"\r\n}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "/servicos/unidade/{codUnidade}",
+					"name": "Listar profissionais do estabelecimento",
 					"request": {
-						"url": "{{url-mapadasaude}}/servicos/unidade/4314902265052",
+						"url": "{{url-mapadasaude}}/profissionais/unidade/4314902265052",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -81,9 +99,9 @@
 					"response": []
 				},
 				{
-					"name": "/profissionais/unidade/{codUnidade}",
+					"name": "Listar serviços do estabelecimento",
 					"request": {
-						"url": "{{url-mapadasaude}}/profissionais/unidade/4314902265052",
+						"url": "{{url-mapadasaude}}/servicos/unidade/4314902265052",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -340,7 +358,16 @@
 			"description": "",
 			"item": [
 				{
-					"name": "Cadastrar Questionário",
+					"name": "Criar questionário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codQuestionario\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						}
+					],
 					"request": {
 						"url": "{{url-metamodelo}}/postagens",
 						"method": "POST",
@@ -363,16 +390,125 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": 1744\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 229\r\n  }\r\n}"
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 229\r\n  }\r\n}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "Visualizar Questionário",
+					"name": "Visualizar questionário",
 					"request": {
 						"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Criar questão",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{ \\\"pergunta\\\": \\\"texto da pergunta\\\", \\\"tipo\\\": \\\"texto|multi|simples|valor\\\", \\\"opcoes\\\" : [{\\\"cod\\\": 0, \\\"texto\\\": \\\"texto da opcao\\\"}] }\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Criar questionário preenchido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codQuestionarioPreenchido\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "appIdentifier",
+								"value": "{{codAplicativo}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 233\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Criar questão preenchida",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{ \\\"codQuestao\\\": 2099, \\\"opcoes\\\": [codOpcao] }\",\r\n  \"texto\": \"resposta texto\",\r\n  \"valor\": 5\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar questionário preenchido",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}",
 						"method": "GET",
 						"header": [
 							{
@@ -455,63 +591,6 @@
 						"url": "{{url-mapadasaude}}/estabelecimentos/latitude/-30.036588/longitude/-51.209567/raio/2?texto=HOSPITAL&quantidade=30",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "feedbacks",
-			"description": "",
-			"item": [
-				{
-					"name": "/postagens/{codPostagem}/conteudos/{codConteudo}/conteudoBinario",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/2273/conteudos/2103/conteudoBinario",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file",
-									"type": "file",
-									"enabled": true
-								}
-							]
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "/postagens/{codPostagem}/conteudos/{codConteudo}/conteudoBinario",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/2273/conteudos/2103/conteudoBinario",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "image/png",
-								"description": ""
-							}
-						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
@@ -892,7 +971,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"codAplicativo\": 348,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"descricao\": \"feedback-positivo\",\r\n  \"textoFormatoJson\": \"Armazena os feedbacks positivos registrados pelas pessoas durante os atendimentos que recebem em um estabelecimento de saúde. Formato do JSON: {...}\"\r\n}\r\n\r\n"
+							"raw": "{\r\n  \"codAplicativo\": 348,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"descricao\": \"questionário de avaliação preenchido\",\r\n  \"textoFormatoJson\": \"Armazena as respostas dadas por um usuário após dar check-out em um estabelecimento. Formato do JSON: { \\\"codQuestao\\\": codQuestao, \\\"opcoes\\\": [codOpcao] }\"\r\n}\r\n\r\n"
 						},
 						"description": ""
 					},
