@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "SUSquare",
-		"_postman_id": "84718c2b-5804-3b20-6d00-e29622d9a45d",
+		"_postman_id": "bc7a5fc0-19ac-4901-ef8b-5df9b0253770",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -12,7 +12,7 @@
 			"description": "",
 			"item": [
 				{
-					"name": "Criar postagem",
+					"name": "Criar postagem de agendamento",
 					"request": {
 						"url": "{{url-metamodelo}}/postagens",
 						"method": "POST",
@@ -35,7 +35,32 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": 1810\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 230\r\n  }\r\n}"
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": 1810\r\n  },\r\n  \"codObjetoDestino\": 999,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 230\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Criar requisição de agendamento",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/2221/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{\\\"tipoAtendimento\\\": \\\"Exame\\\",\\\"especialidadeAtendimento\\\": \\\"Nutricionista\\\"}\"\r\n}"
 						},
 						"description": ""
 					},
@@ -45,6 +70,20 @@
 					"name": "/servicos/unidade/{codUnidade}",
 					"request": {
 						"url": "{{url-mapadasaude}}/servicos/unidade/4314902265052",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/profissionais/unidade/{codUnidade}",
+					"request": {
+						"url": "{{url-mapadasaude}}/profissionais/unidade/4314902265052",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -447,7 +486,6 @@
 							"formdata": [
 								{
 									"key": "file",
-									"value": "80.pdf",
 									"type": "file",
 									"enabled": true
 								}
