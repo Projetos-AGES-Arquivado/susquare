@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "SUSquare",
-		"_postman_id": "047aff92-863a-91d1-ce77-5e6f2eb9da18",
+		"_postman_id": "7fc26f7a-4e21-d6e5-80aa-68da4947e3d8",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -12,7 +12,16 @@
 			"description": "",
 			"item": [
 				{
-					"name": "Criar postagem",
+					"name": "Criar agendamento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codAgendamento\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						}
+					],
 					"request": {
 						"url": "{{url-metamodelo}}/postagens",
 						"method": "POST",
@@ -35,7 +44,69 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 230\r\n  }\r\n}"
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"codObjetoDestino\": 999,\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 230\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Criar requisição de agendamento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codRequisicaoAgendamento\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/2221/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{\\\"tipoAtendimento\\\": \\\"consulta|exame|procedimento\\\",\\\"especialidadeAtendimento\\\": \\\"Nutricionista\\\"}\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Listar profissionais do estabelecimento",
+					"request": {
+						"url": "{{url-mapadasaude}}/profissionais/unidade/4314902265052",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Listar serviços do estabelecimento",
+					"request": {
+						"url": "{{url-mapadasaude}}/servicos/unidade/4314902265052",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
 						},
 						"description": ""
 					},
