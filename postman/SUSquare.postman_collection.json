@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "SUSquare",
-		"_postman_id": "aba8d48b-b808-f6f2-e4ee-3f8da78fa974",
+		"_postman_id": "fa0cb588-78f1-9c41-54c5-eb75fb889088",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -182,7 +182,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"conteudo\": {\r\n    \"JSON\": \"{ \\\"codUnidade\\\": \\\"String\\\", \\\"checkInMetodo\\\": \\\"georef|gps|manual\\\", \\\"dispositivoModelo\\\": \\\"SM-G900MD\\\", \\\"dispositivoMarca\\\": \\\"Samsung\\\", \\\"dispositivoSisOp\\\": \\\"Android\\\", \\\"dispositivoSisOpVersao\\\": \\\"6.0.1\\\" }\"\r\n  },\r\n  \"postagem\": {\r\n    \"autor\": {\r\n      \"codPessoa\": {{currentUser}}\r\n    },\r\n    \"latitude\": -30.036588,\r\n    \"longitude\": -51.209567,\r\n    \"tipo\": {\r\n      \"codTipoPostagem\": 221\r\n    }\r\n  }\r\n}"
+							"raw": "{\r\n  \"conteudo\": {\r\n    \"JSON\": \"{ \\\"codUnidade\\\": \\\"String\\\", \\\"dispositivoModelo\\\": \\\"SM-G900MD\\\", \\\"dispositivoMarca\\\": \\\"Samsung\\\", \\\"dispositivoSisOp\\\": \\\"Android\\\", \\\"dispositivoSisOpVersao\\\": \\\"6.0.1\\\" }\"\r\n  },\r\n  \"postagem\": {\r\n    \"autor\": {\r\n      \"codPessoa\": {{currentUser}}\r\n    },\r\n    \"latitude\": -30.036588,\r\n    \"longitude\": -51.209567,\r\n    \"tipo\": {\r\n      \"codTipoPostagem\": 221\r\n    }\r\n  }\r\n}"
 						},
 						"description": ""
 					},
@@ -417,6 +417,26 @@
 					"response": []
 				},
 				{
+					"name": "Visualizar todos os questionários",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codTiposPostagem=229",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
 					"name": "Criar questão",
 					"request": {
 						"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}/conteudos",
@@ -481,7 +501,7 @@
 					"response": []
 				},
 				{
-					"name": "Criar questão preenchida",
+					"name": "Criar resposta",
 					"request": {
 						"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}/conteudos",
 						"method": "POST",
@@ -558,7 +578,7 @@
 			"description": "",
 			"item": [
 				{
-					"name": "/estabelecimentos",
+					"name": "Estabelecimentos com filtros variados",
 					"request": {
 						"url": "{{url-mapadasaude}}/estabelecimentos",
 						"method": "GET",
@@ -572,7 +592,7 @@
 					"response": []
 				},
 				{
-					"name": "/estabelecimentos/latitude/{latitude}/longitude/{longitude}/raio/{raio}",
+					"name": "Estabelecimentos com filtro de raio",
 					"request": {
 						"url": "{{url-mapadasaude}}/estabelecimentos/latitude/-30.036588/longitude/-51.209567/raio/2",
 						"method": "GET",
@@ -586,11 +606,190 @@
 					"response": []
 				},
 				{
-					"name": "/estabelecimentos/latitude/{latitude}/longitude/{longitude}/raio/{raio} copy",
+					"name": "Estabelecimentos com filtro de raio e texto",
 					"request": {
 						"url": "{{url-mapadasaude}}/estabelecimentos/latitude/-30.036588/longitude/-51.209567/raio/2?texto=HOSPITAL&quantidade=30",
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "favoritos",
+			"description": "",
+			"item": [
+				{
+					"name": "Criar lista de favoritos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codListaFavorito\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "appIdentifier",
+								"value": "{{codAplicativo}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 220\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar favorito à lista",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codFavorito\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codListaFavorito}}/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{\\\"codUnidade\\\": \\\"4314902265052\\\"}\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar lista de favoritos",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codListaFavorito}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar favorito",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codListaFavorito}}/conteudos/{{codFavorito}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Remover favorito de lista",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codListaFavorito}}/conteudos/{{codFavorito}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir lista de favoritos",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codListaFavorito}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar lista de favoritos (exclusão)",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codAutor={{currentUser}}&codTiposPostagem=220",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
@@ -722,7 +921,7 @@
 							"formdata": [
 								{
 									"key": "file",
-									"value": "",
+									"value": "birr.png",
 									"type": "file",
 									"enabled": true
 								}
@@ -855,7 +1054,7 @@
 							"formdata": [
 								{
 									"key": "file",
-									"value": "",
+									"value": "birr.png",
 									"type": "file",
 									"enabled": true
 								}
@@ -974,6 +1173,15 @@
 			"item": [
 				{
 					"name": "/postagens",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var myHeader = postman.getResponseHeader(\"Location\");\r\npostman.setEnvironmentVariable(\"codFavorito\", myHeader.toString().substring(myHeader.toString().length-4));"
+							}
+						}
+					],
 					"request": {
 						"url": "{{url-metamodelo}}/postagens",
 						"method": "POST",
@@ -996,7 +1204,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": 1744\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 211\r\n  }\r\n}"
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 220\r\n  }\r\n}"
 						},
 						"description": ""
 					},
@@ -1005,7 +1213,7 @@
 				{
 					"name": "/postagens",
 					"request": {
-						"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codAutor=1744&codTiposPostagem=211",
+						"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codAutor={{currentUser}}&codTiposPostagem=211",
 						"method": "GET",
 						"header": [
 							{
