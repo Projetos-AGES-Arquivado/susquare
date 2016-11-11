@@ -1,45 +1,61 @@
 {
-	"variables": [],
-	"info": {
-		"name": "SUSquare - Node",
-		"_postman_id": "1474ad9b-a042-127c-825d-5aecf460ea7b",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-	},
-	"item": [
+	"id": "e8550e0b-0f5e-9fe9-874b-286ae41ac2a9",
+	"name": "SUSquare - Node",
+	"description": "",
+	"order": [
+		"632017a2-ee2f-5cce-e85e-b37f0766a22e",
+		"be342f8e-0b0f-ec7a-d1ed-25096c5bf816",
+		"d9759cd3-e447-5210-c84d-1300b0f1b074"
+	],
+	"folders": [],
+	"timestamp": 0,
+	"owner": "1084767",
+	"public": false,
+	"requests": [
 		{
+			"id": "632017a2-ee2f-5cce-e85e-b37f0766a22e",
 			"name": "GET /estabelecimentos",
-			"request": {
-				"url": "localhost:8888/estabelecimentos",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"codUnidade\": \"batatonha\",\r\n  \"tempoEspera\": 7,\r\n  \"emailAgendamento\": \"atumcom@goiaba.com\",\r\n  \"uriEstabelecimento\": \"zombo.com\"\r\n}"
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "e8550e0b-0f5e-9fe9-874b-286ae41ac2a9",
+			"method": "GET",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n  \"codUnidade\": \"batatonha\",\r\n  \"tempoEspera\": 7,\r\n  \"emailAgendamento\": \"atumcom@goiaba.com\",\r\n  \"uriEstabelecimento\": \"zombo.com\"\r\n}",
+			"url": "localhost:8888/estabelecimentos",
+			"responses": []
 		},
 		{
+			"id": "be342f8e-0b0f-ec7a-d1ed-25096c5bf816",
 			"name": "GET /estabelecimentos/{codUnidade}",
-			"request": {
-				"url": "localhost:8888/estabelecimentos/{codUnidade}",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"description": ""
-			},
-			"response": []
+			"description": "",
+			"collectionId": "e8550e0b-0f5e-9fe9-874b-286ae41ac2a9",
+			"method": "GET",
+			"headers": "",
+			"dataMode": "params",
+			"data": [],
+			"rawModeData": "",
+			"url": "localhost:8888/estabelecimentos/{codUnidade}",
+			"responses": []
+		},
+		{
+			"id": "d9759cd3-e447-5210-c84d-1300b0f1b074",
+			"headers": "Content-Type: application/json\n",
+			"url": "localhost:27017/attendance/{{idAttendance}}/comment",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1478891065288,
+			"name": "POST /attendance/idAttendance/comment",
+			"description": "adiciona comentario em um atendimento",
+			"collectionId": "e8550e0b-0f5e-9fe9-874b-286ae41ac2a9",
+			"responses": [],
+			"rawModeData": "{\r\n \"idAtendimento\": \"{{idAttendance}}\",\r\n \"tipoComentario\": \"C\",\r\n \"comentario\": \"muitogud\"\r\n}"
 		}
 	]
 }
