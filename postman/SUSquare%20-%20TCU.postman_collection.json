@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "SUSquare - TCU",
-		"_postman_id": "44261c44-5653-9aba-ecd3-a449c068f34f",
+		"_postman_id": "ef49ece1-5fb7-a78a-97f2-14b4391e844f",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -378,206 +378,6 @@
 			]
 		},
 		{
-			"name": "avaliações de atendimento",
-			"description": "",
-			"item": [
-				{
-					"name": "Criar questionário",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var myHeader = postman.getResponseHeader(\"Location\");\r",
-									"postman.setEnvironmentVariable(\"codQuestionario\", myHeader.toString().substring(myHeader.toString().length-4));"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "{{url-metamodelo}}/postagens",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "appIdentifier",
-								"value": "{{codAplicativo}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 229\r\n  }\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Visualizar questionário",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Visualizar todos os questionários",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codTiposPostagem=229",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Criar questão",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}/conteudos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"JSON\": \"{ \\\"pergunta\\\": \\\"texto da pergunta\\\", \\\"tipo\\\": \\\"texto|multi|simples|valor\\\", \\\"opcoes\\\" : [{\\\"cod\\\": 0, \\\"texto\\\": \\\"texto da opcao\\\"}] }\"\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Criar questionário preenchido",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var myHeader = postman.getResponseHeader(\"Location\");\r",
-									"postman.setEnvironmentVariable(\"codQuestionarioPreenchido\", myHeader.toString().substring(myHeader.toString().length-4));"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "{{url-metamodelo}}/postagens",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "appIdentifier",
-								"value": "{{codAplicativo}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"latitude\": -30.036588,\r\n  \"longitude\": -51.209567,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 233\r\n  }\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Criar resposta",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}/conteudos",
-						"method": "POST",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"JSON\": \"{ \\\"codQuestao\\\": 2099, \\\"opcoes\\\": [codOpcao] }\",\r\n  \"texto\": \"resposta texto\",\r\n  \"valor\": 5\r\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Visualizar questionário preenchido",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "digits",
 			"description": "",
 			"item": [
@@ -735,7 +535,27 @@
 					"response": []
 				},
 				{
-					"name": "Visualizar lista de favoritos",
+					"name": "Visualizar postagens de favoritos do usuário",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codAutor={{currentUser}}&codTiposPostagem=220",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar uma postagem de favoritos de usuário",
 					"request": {
 						"url": "{{url-metamodelo}}/postagens/{{codListaFavorito}}",
 						"method": "GET",
@@ -755,7 +575,7 @@
 					"response": []
 				},
 				{
-					"name": "Visualizar favorito",
+					"name": "Visualizar a lista de favoritos de um usuário",
 					"request": {
 						"url": "{{url-metamodelo}}/postagens/{{codListaFavorito}}/conteudos/{{codFavorito}}",
 						"method": "GET",
@@ -799,26 +619,6 @@
 					"request": {
 						"url": "{{url-metamodelo}}/postagens/{{codListaFavorito}}",
 						"method": "DELETE",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Visualizar lista de favoritos (exclusão)",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codAutor={{currentUser}}&codTiposPostagem=220",
-						"method": "GET",
 						"header": [
 							{
 								"key": "appToken",
@@ -958,7 +758,8 @@
 								{
 									"key": "file",
 									"type": "file",
-									"enabled": true
+									"enabled": true,
+									"value": ""
 								}
 							]
 						},
@@ -1043,31 +844,6 @@
 					"response": []
 				},
 				{
-					"name": "visualizar imagem do conteudo do feed",
-					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codFeedbackPositivo}}/conteudos/{{codConteudoFeedbackPositivo}}/conteudoBinario",
-						"method": "GET",
-						"header": [
-							{
-								"key": "appToken",
-								"value": "{{appToken}}",
-								"description": ""
-							},
-							{
-								"key": "Accept",
-								"value": "image/jpeg",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
 					"name": "post conteudo binario em conteudo postagem",
 					"request": {
 						"url": "{{url-metamodelo}}/postagens/{{codFeedbackPositivo}}/conteudos/{{codConteudoFeedbackPositivo}}/conteudoBinario",
@@ -1090,9 +866,35 @@
 								{
 									"key": "file",
 									"type": "file",
-									"enabled": true
+									"enabled": true,
+									"value": ""
 								}
 							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "visualizar imagem do conteudo do feed",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codFeedbackPositivo}}/conteudos/{{codConteudoFeedbackPositivo}}/conteudoBinario",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "image/jpeg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": ""
 					},
@@ -1179,7 +981,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nomeUsuario\": \"0e99e77ab5a265bbcbed6df555cebdb92fa8e383\", // sha1 do número do telefone do usuario\r\n  \"email\": \"0e99e77ab5a265bbcbed6df555cebdb92fa8e383@vamossaude.com.br\", // idem + @vamossaude.com.br\r\n  \"senha\": \"12345\" // senha a partir de alguma coisa do digits\r\n}\r\n"
+							"raw": "{\r\n  \"nomeUsuario\": \"0e99e77ab5a265bbcbed6df555cebdb92fa8e384\",\r\n  \"email\": \"0e99e77ab5a265bbcbed6df555cebdb92fa8e384@vamossaude.com.br\",\r\n  \"senha\": \"12345\"\r\n}\r\n"
 						},
 						"description": ""
 					},
@@ -1367,6 +1169,279 @@
 						"body": {
 							"mode": "formdata",
 							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "questionarios",
+			"description": "",
+			"item": [
+				{
+					"name": "Criar questionário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var myHeader = postman.getResponseHeader(\"Location\");\r",
+									"postman.setEnvironmentVariable(\"codQuestionario\", myHeader.toString().substring(myHeader.toString().length-19).substring(0, 4));"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "appIdentifier",
+								"value": "{{codAplicativo}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"conteudo\": {\r\n    \"JSON\": \"{ \\\"perguntas\\\":  [ { \\\"idPergunta\\\": 1, \\\"enunciado\\\": \\\"De 1 a 5, sendo 1 muito ruim e 5 muito bom, qual sua opinião sobre o estabelecimento?\\\", \\\"tipo\\\": \\\"valor\\\", \\\"minimo\\\": 1, \\\"maximo\\\": 5, \\\"proximasPerguntas\\\":  [ { \\\"idCondicao\\\": 1, \\\"condicao\\\": \\\"resposta<3\\\", \\\"idProximaPergunta\\\": 2 }, { \\\"idCondicao\\\": 2, \\\"condicao\\\": \\\"resposta>3\\\", \\\"idProximaPergunta\\\": 3 }, { \\\"idCondicao\\\": 3, \\\"condicao\\\": \\\"resposta=3\\\", \\\"idProximaPergunta\\\": 4 } ] }, { \\\"idPergunta\\\": 2, \\\"enunciado\\\": \\\"Explique o que mais lhe desagradou:\\\", \\\"tipo\\\": \\\"texto\\\", \\\"maxTexto\\\": 300, \\\"proximasPerguntas\\\": [ { \\\"idCondicao\\\": 1, \\\"condicao\\\": true, \\\"idProximaPergunta\\\": 4 } ] }, { \\\"idPergunta\\\": 3, \\\"enunciado\\\": \\\"Indique as 2 coisas que mais lhe agradaram no estabelecimento:\\\", \\\"tipo\\\": \\\"multi\\\", \\\"maxOpcoes\\\": 3, \\\"opcoes\\\":  [ { \\\"idOpcao\\\": 1, \\\"rotulo\\\": \\\"1\\\", \\\"descricao\\\": \\\"Tempo de atendimento\\\" }, { \\\"idOpcao\\\": 2, \\\"rotulo\\\": \\\"2\\\", \\\"descricao\\\": \\\"Equipe médica\\\" }, { \\\"idOpcao\\\": 3, \\\"rotulo\\\": \\\"3\\\", \\\"descricao\\\": \\\"Equipe de enfermagem\\\" }, { \\\"idOpcao\\\": 4, \\\"rotulo\\\": \\\"4\\\", \\\"descricao\\\": \\\"Realização de exames\\\" }, { \\\"idOpcao\\\": 5, \\\"rotulo\\\": \\\"5\\\", \\\"descricao\\\": \\\"Equipamentos\\\" }, { \\\"idOpcao\\\": 6, \\\"rotulo\\\": \\\"6\\\", \\\"descricao\\\": \\\"Localização\\\" }, { \\\"idOpcao\\\": 7, \\\"rotulo\\\": \\\"7\\\", \\\"descricao\\\": \\\"Limpeza\\\" } ], \\\"proximasPerguntas\\\":  [ { \\\"idCondicao\\\": 1, \\\"condicao\\\": \\\"resposta=2\\\", \\\"idProximaPergunta\\\": 4 }, { \\\"idCondicao\\\": 2, \\\"condicao\\\": true, \\\"idProximaPergunta\\\": 7 } ] }, { \\\"idPergunta\\\": 4, \\\"enunciado\\\": \\\"Qual a especialidade do médico que lhe atendeu?\\\", \\\"tipo\\\": \\\"simples\\\", \\\"opcoes\\\":  [ { \\\"idOpcao\\\": 1, \\\"rotulo\\\": \\\"1\\\", \\\"descricao\\\": \\\"Não fui atendido por um médico\\\" }, { \\\"idOpcao\\\": 2, \\\"rotulo\\\": \\\"2\\\", \\\"descricao\\\": \\\"Médico do trabalho\\\" }, { \\\"idOpcao\\\": 3, \\\"rotulo\\\": \\\"3\\\", \\\"descricao\\\": \\\"Médico infectologista\\\" }, { \\\"idOpcao\\\": 4, \\\"rotulo\\\": \\\"4\\\", \\\"descricao\\\": \\\"Cirurgião dentista - traumatologista bucomaxilofacial\\\" }, { \\\"idOpcao\\\": 5, \\\"rotulo\\\": \\\"5\\\", \\\"descricao\\\": \\\"Médico cardiologista\\\" }, { \\\"idOpcao\\\": 6, \\\"rotulo\\\": \\\"6\\\", \\\"descricao\\\": \\\"Médico clínico\\\" }, { \\\"idOpcao\\\": 7, \\\"rotulo\\\": \\\"7\\\", \\\"descricao\\\": \\\"Médico fisiatra\\\" }, { \\\"idOpcao\\\": 8, \\\"rotulo\\\": \\\"8\\\", \\\"descricao\\\": \\\"Médico neurocirurgião\\\" }, { \\\"idOpcao\\\": 9, \\\"rotulo\\\": \\\"9\\\", \\\"descricao\\\": \\\"Médico endoscopista\\\"  }, { \\\"idOpcao\\\": 10, \\\"rotulo\\\": \\\"10\\\", \\\"descricao\\\": \\\"Outro\\\"  } ], \\\"proximasPerguntas\\\": [ { \\\"idCondicao\\\": 1, \\\"condicao\\\": \\\"resposta=1\\\", \\\"idProximaPergunta\\\": 5 }, { \\\"idCondicao\\\": 2, \\\"condicao\\\": \\\"resposta=10\\\", \\\"idProximaPergunta\\\": 6 }, { \\\"idCondicao\\\": 3, \\\"condicao\\\": true, \\\"idProximaPergunta\\\": 7 } ] }, { \\\"idPergunta\\\": 5, \\\"enunciado\\\": \\\"Explique por que você não foi atendido por um médico:\\\", \\\"tipo\\\": \\\"texto\\\", \\\"maxTexto\\\": 300, \\\"proximasPerguntas\\\": [ { \\\"idCondicao\\\": 1, \\\"condicao\\\": true, \\\"idProximaPergunta\\\": 7 } ] }, { \\\"idPergunta\\\": 6, \\\"enunciado\\\": \\\"Qual?\\\", \\\"tipo\\\": \\\"texto\\\", \\\"maxTexto\\\": 300, \\\"proximasPerguntas\\\": [ { \\\"idCondicao\\\": 1, \\\"condicao\\\": true, \\\"idProximaPergunta\\\": 7 } ] }, { \\\"idPergunta\\\": 7, \\\"enunciado\\\": \\\"Dê sua opinião geral sobre o atendimento\\\", \\\"tipo\\\": \\\"texto\\\", \\\"maxTexto\\\": 300 } ] }\"\r\n  },\r\n  \"postagem\": {\r\n    \"autor\": {\r\n      \"codPessoa\": {{currentUser}}\r\n    },\r\n    \"tipo\": {\r\n      \"codTipoPostagem\": 229\r\n    }\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar questionário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var myJSON = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"codQuestionarioConteudo\", myJSON.conteudos[0].codConteudoPostagem);\r",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar perguntas do questionário",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codQuestionario}}/conteudos/{{codQuestionarioConteudo}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar todos os questionários",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens?codAplicativo={{codAplicativo}}&codTiposPostagem=229",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Criar questionário preenchido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var myHeader = postman.getResponseHeader(\"Location\");\r",
+									"postman.setEnvironmentVariable(\"codQuestionarioPreenchido\", myHeader.toString().substring(myHeader.toString().length-19).substring(0, 4));"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "appIdentifier",
+								"value": "{{codAplicativo}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"conteudo\": {\r\n    \"JSON\": \"{ \\\"idQuestionario\\\": 4456 }\"\r\n  },\r\n  \"postagem\": {\r\n    \"autor\": {\r\n      \"codPessoa\": {{currentUser}}\r\n    },\r\n    \"tipo\": {\r\n      \"codTipoPostagem\": 233\r\n    }\r\n  }\r\n}\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar questionário preenchido",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Criar resposta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var myHeader = postman.getResponseHeader(\"Location\");\r",
+									"postman.setEnvironmentVariable(\"codAtendimento\", myHeader.toString().substring(myHeader.toString().length-4));"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{ \\\"codQuestao\\\": 7 }\",\r\n  \"texto\": \"Excelente posto de saúde!\"\r\n}\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar respostas de questionário preenchido",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codQuestionarioPreenchido}}/conteudos/{{codPostagemQuestionarioPreenchidoResposta}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir questionário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var myJSON = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"codQuestionarioConteudo\", myJSON.conteudos[0].codConteudoPostagem);\r",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/2271",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": ""
 					},
