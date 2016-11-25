@@ -452,6 +452,217 @@
 			]
 		},
 		{
+			"name": "estabelecimentos-fotos",
+			"description": "",
+			"item": [
+				{
+					"name": "cadastrar foto de estabelecimento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var myHeader = postman.getResponseHeader(\"Location\");\r",
+									"postman.setEnvironmentVariable(\"codFoto\", myHeader.toString().substring(myHeader.toString().length-4));"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "appIdentifier",
+								"value": "{{codAplicativo}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"autor\": {\r\n    \"codPessoa\": {{currentUser}}\r\n  },\r\n  \"codTipoObjetoDestino\": 100,\r\n  \"codObjetoDestino\": 2211003402126,\r\n  \"tipo\": {\r\n    \"codTipoPostagem\": 369\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar conteudo da foto do estabelecimento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var myHeader = postman.getResponseHeader(\"Location\");\r",
+									"postman.setEnvironmentVariable(\"codConteudoFoto\", myHeader.toString().substring(myHeader.toString().length-4));"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codFoto}}/conteudos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"JSON\": \"{\\\"content-type\\\": \\\"image/jpeg\\\"}\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "visualizar conteudo do feedback positivo copy",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codFoto}}/conteudos/{{codConteudoFoto}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar conteudo binário da foto do estabelecimento",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codFoto}}/conteudos/{{codConteudoFoto}}/conteudoBinario",
+						"method": "POST",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "formData",
+								"value": "image/jpeg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"enabled": true,
+									"src": "sao-lucas.jpg"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar conteudo binário da foto do estabelecimento",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codFoto}}/conteudos/{{codConteudoFoto}}/conteudoBinario",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "formData",
+								"value": "image/jpeg",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "image/jpeg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"enabled": true,
+									"src": "sao-lucas.jpg"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar conteudo binário da foto de um estabelecimento",
+					"request": {
+						"url": "{{url-metamodelo}}/postagens/{{codFoto}}/conteudos/{{codConteudoFoto}}/conteudoBinario?codAplicativo={{codAplicativo}}&codObjetoDestino={{codEstabelecimento}}&codTiposPostagem=369",
+						"method": "GET",
+						"header": [
+							{
+								"key": "appToken",
+								"value": "{{appToken}}",
+								"description": ""
+							},
+							{
+								"key": "formData",
+								"value": "image/jpeg",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "image/jpeg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"enabled": true,
+									"src": "sao-lucas.jpg"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "favoritos",
 			"description": "",
 			"item": [
@@ -577,7 +788,7 @@
 				{
 					"name": "Visualizar a lista de favoritos de um usuário",
 					"request": {
-						"url": "{{url-metamodelo}}/postagens/{{codListaFavorito}}/conteudos/{{codFavorito}}",
+						"url": "{{url-metamodelo}}/postagens?codAutor={{currentUser}}&codTiposPostagem=220",
 						"method": "GET",
 						"header": [
 							{
@@ -867,7 +1078,7 @@
 									"key": "file",
 									"type": "file",
 									"enabled": true,
-									"value": ""
+									"src": "cartorios.png"
 								}
 							]
 						},
